@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}My Reviews{% endblock %}
+{% block content %}
+		<h3 class="border-bottom pb-2 mt-3">My Account</h3>
+		<div class="row mt-4">
+			<!-- Left Sidebar -->
+			<div class="col-12 col-sm-3">
+				{% include 'account-sidebar.html' %}
+			</div>
+			<!-- ##	End -->
+			<!-- Right Content -->
+			<div class="col-12 col-sm-9">
+				<div class="card">
+					<h5 class="card-header">Reviews</h5>
+					<div class="card-body">
+						<form>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Movie</th>
+										<th>Rating</th>
+										<th>Comment</th>
+										<th>Add Time</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for data in all_data %}
+									<tr>
+										<td>
+											<a href="/detail/{{data.movie.title|slugify}}/{{data.movie.id}}">{{data.movie.title}}</a>
+										</td>
+										<td>{{data.rating}}/5</td>
+										<td>{{data.review}}</td>
+										<td>{{data.add_time}}</td>
+										<td>
+											<a onclick="return confirm('Are you sure to delete this data?')" href="/delete-review/{{data.id}}" class="btn btn-sm btn-danger">Delete</a>
+										</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- ##	End -->
+		</div>
+		{% endblock %}

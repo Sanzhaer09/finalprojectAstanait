@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+		<h3 class="border-bottom pb-2 mt-3">Celebrities</h3>
+		<div class="row mt-4">
+			<!-- Left Content -->
+			<div class="col-12 col-sm-8">
+				<div class="row">
+					<!-- Celebrity Box -->
+					{% for data in all_data %}
+					<div class="col-12 col-sm-6 mb-4">
+						<div class="card">
+						  <a href="/celebrity/{{data.name|slugify}}/{{data.id}}"><img src="/media/{{data.image}}" class="card-img-top" alt="Celebrity Image"></a>
+						  <div class="card-body">
+						    <h5 class="card-title"><a href="/celebrity/{{data.name|slugify}}/{{data.id}}">{{data.name}}</a></h5>
+						    <a href="/celebrity/{{data.name|slugify}}/{{data.id}}" class="btn btn-primary mt-3">Movie List</a>
+						  </div>
+						</div>
+					</div>
+					{% endfor %}
+					<!-- ##	End -->
+				</div>
+			</div>
+			<!-- ##	End -->
+			{% include 'sidebar.html' %}
+		</div>
+{% endblock %}

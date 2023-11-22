@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+		<h3 class="border-bottom pb-2 mt-3">Categories</h3>
+		<div class="row mt-4">
+			<!-- Left Content -->
+			<div class="col-12 col-sm-8">
+				<div class="row">
+					<!-- Category Box -->
+					{% for data in all_data %}
+					<div class="col-12 col-sm-6 col-md-4 mb-3">
+						<div class="card">
+							<div class="card-body">
+								<a href="/category/{{data.title|slugify}}/{{data.id}}" class="card-title">{{data.title}}</a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<!-- ##	End -->
+				</div>
+			</div>
+			<!-- ##	End -->
+			{% include 'sidebar.html' %}
+		</div>
+{% endblock %}

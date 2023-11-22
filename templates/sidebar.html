@@ -1,0 +1,45 @@
+<!-- Right Sidebar -->
+			<div class="col-12 col-sm-4">
+				<!-- Search Start -->
+				<div class="card mb-4">
+					<h5 class="card-header">Search</h5>
+					<div class="card-body">
+						<form action="/">
+							<div class="input-group">
+							<input type="text" name="q" class="form-control" placeholder="Search Movies" />
+							<div class="input-group-append">
+								<button class="btn btn-dark" type="submit" id="button-addon2">Search</button>
+							</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- Search End -->
+				<!-- Top Movies -->
+				<div class="card mb-4">
+					<h5 class="card-header">Top Movies</h5>
+					<ul class="list-group list-group-flush">
+						{% for top in top_movies %}
+						<li class="list-group-item"><a href="/detail/{{top.title|slugify}}/{{top.id}}">{{top.title}}<span class="float-right badge badge-warning">{{top.total_rating|floatformat:1}}/5</span></a></li>
+						{% endfor %}
+				  	</ul>
+				  	<div class="card-footer">
+				  		<a href="/">View All</a>
+				  	</div>
+				</div>
+				<!-- End -->
+				<!-- Upcoming Movies -->
+				<div class="card mb-4">
+					<h5 class="card-header">Upcoming Movies</h5>
+					<ul class="list-group list-group-flush">
+						{% for upcoming in upcoming_movies %}
+						<li class="list-group-item"><a href="/detail/{{upcoming.title|slugify}}/{{upcoming.id}}">{{upcoming.title}}<span class="float-right badge badge-primary">{{upcoming.release_date}}</span></a></li>
+						{% endfor %}
+				  	</ul>
+				  	<div class="card-footer">
+				  		<a href="/upcoming">View All</a>
+				  	</div>
+				</div>
+				<!-- End -->
+			</div>
+			<!-- ##	End -->

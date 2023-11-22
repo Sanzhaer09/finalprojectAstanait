@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+		<div class="row mt-4">
+			<!-- Right Content -->
+			<div class="col-8 offset-2">
+				<div class="card">
+					<h5 class="card-header">Register</h5>
+					<div class="card-body">
+						{% for msg in messages %}
+						<p class="text-success">{{msg}}</p>
+						{% endfor %}
+						<form method="post" action="">
+                            {% csrf_token %}
+							<table class="table table-bordered">
+								{{form.as_table}}
+								<tr>
+									<td colspan="2">
+										<input type="submit" class="btn btn-dark" />
+									</td>
+								</tr>
+							</table>
+							<p>If you are already registered then please <a href="/accounts/login">login here</a>.</p>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- ##	End -->
+		</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+		<div class="row mt-4">
+			<!-- Right Content -->
+			<div class="col-8 offset-2">
+				<div class="card">
+					<h5 class="card-header">Login</h5>
+					<div class="card-body">
+						<form method="post" action="">
+                            {% csrf_token %}
+							<table class="table table-bordered">
+								{{form.as_table}}
+								<tr>
+									<td colspan="2">
+										<input type="submit" class="btn btn-dark" />
+									</td>
+								</tr>
+							</table>
+							<p>If you are not registered then <a href="/accounts/register">register here</a>.</p>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- ##	End -->
+		</div>
+{% endblock %}
